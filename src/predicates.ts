@@ -5,11 +5,13 @@ import some from 'lodash/some'
 
 export type Predicate<T extends any> = (x: any) => x is T
 
-export const and = <T extends any>(...predicates: Predicate<T>[]) => (x: any) =>
-  every(predicates, (predicate) => predicate(x))
+export const and = <T extends any>(...predicates: Predicate<T>[]) => (
+  x: any
+): x is T => every(predicates, (predicate) => predicate(x))
 
-export const or = (...validators: Array<(x: any) => boolean>) => (x: any) =>
-  some(validators, (validator) => validator(x))
+export const or = <T extends any>(...predicates: Predicate<T>[]) => (
+  x: any
+): x is T => some(predicates, (validator) => validator(x))
 
 export const isFloat = (x: any): x is number => isNumber(x) && !isInteger(x)
 
