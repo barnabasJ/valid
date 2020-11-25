@@ -8,7 +8,6 @@ import {
   isValidEmail,
   validateTuple,
   validateList,
-  checkedSumFunction,
   checkFunction,
 } from '..'
 
